@@ -15,7 +15,7 @@
 </head>
 <!-- Set class to official for more formal font; unofficial for informal font -->
 <body class="official bgColor6">
-	
+	<link rel="stylesheet" href="styles/NavigationBar.css" media="screen">
 	<!-- The surface is the main playing field for the game -->
 	<svg id="surface" style="width:100% height:100%" xmlns="http://www.w3.org/2000/svg" version="1.1" onclick="toggleSimStep();">
 	</svg>
@@ -25,22 +25,125 @@
 	<div id="controls" style="position:absolute;bottom:0;left:35%">Animation Speed:
 	<input id="slider1" type="range" min = "0" value:"275" max="500" step="10" onchange="redrawWindow();" /> 
 	</div>
-	<form style="position:absolute;bottom:80%;left:101%" >
-		# of doctors (1 to 5)
-		<input type = "number" value = "3" name = "numdoctor" 
-		size = "2" min= "1" max = "5" id = "numdoctor">
-		<input type = "button" value = "submit" name = "doctorbutton" id = "doctorbutton"
-		onclick = "resetdoctors();"></button>
-	</form>
-	<form style="position:absolute;bottom:65%;left:101%" >
-			# of receptionist (1 to 5)
-			<input type = "number" value = "3" name = "numreception" 
-			size = "2" min= "1" max = "5" id = "numreception">
-			<input type = "button" value = "submit" name = "receptionbutton" id = "receptionbutton"
-			onclick = "resetreception();"></button>
-	</form>
 
+	<div id="mySidenav1" class="sidenav">
+		<a href="javascript:void(0)" class="closebtn" onclick="closeNav('mySidenav1')">&times;</a>
+		<h1>Number of caregivers</h1>
+		<h1>(1 to 5)</h1>
+		<form>
+	  	<a> # of P3 doctors</a>
+	  	<input type = "number" value = "5" maxlength = "1"
+	  	size = "2" min= "1" max = "5" id = "numdoctor3" class = "tb">
+	  	<a> # of receptionist</a>
+	  	<input type = "number" value = "3" maxlength = "1"
+	  	size = "2" min= "1" max = "5" id = "numreception" class = "tb">
+		<br>
+	  	<button type = "button" value = "submit" id = "CareButton"
+		onclick = "ChangeCaregivers();" class = "nav-button">Submit</button>
+		<br>
+		<button type = "button" value = "submit" id = "CareButton"
+		onclick = "ChangeCaregiversAndClose();" class = "nav-button">Submit and close</button>
+		</form>
+		<br>
+		<a>*out of range values</a>  
+		<a>will be set to 1</a>
+  	</div>
+	<span style="position:absolute;bottom:90%;left:90%;font-size:20px;cursor:pointer" onclick="openNav('mySidenav1');">&#9776; Caregivers</span>
+
+	<div id="mySidenav2" class="sidenav">
+		<a href="javascript:void(0)" class="closebtn" onclick="closeNav('mySidenav2')">&times;</a>
+		<h1>Probabilites</h1>
+		<h1>(0 to 100)%</h1>
+		<form>
+	  	<a> Arrival of patient</a>
+	  	<input type = "number" value = "25" maxlength = "3"
+	  	size = "2" min= "0" max = "100" id = "ProbArrival" class = "tb">
+	  	<a> Prob of P1 patient</a>
+	  	<input type = "number" value = "5" maxlength = "3"
+	  	size = "2" min= "0" max = "100" id = "ProbP1" class = "tb">
+	  	<a> Prob of P2 patient</a>
+	  	<input type = "number" value = "25" maxlength = "3"
+	  	size = "2" min= "0" max = "100" id = "ProbP2" class = "tb">
+		<a> Prob of P3 patient</a>  
+		<a> = 1 - Prob P2 - Prob P3 </a>
+		<br>
+		<br>
+		<a> Prob from bed -> home</a>
+	  	<input type = "number" value = "75" maxlength = "3"
+		size = "2" min= "0" max = "100" id = "ProbBedHome" class = "tb">
+		<a> Prob from bed -> ward</a>
+	  	<input type = "number" value = "24" maxlength = "3"
+		size = "2" min= "0" max = "100" id = "ProbBedWard" class = "tb">
+		<a> Prob from bed -> bed</a>  
+		<a> = 1 - bed->home - bed->ward </a>
+		<br>
+	  	<button type = "button" value = "submit" id = "ProbButton"
+		onclick = "ChangeProbabilities();" class = "nav-button">Submit</button>
+		<br>
+		<button type = "button" value = "submit" id = "ProbButton"
+		onclick = "ChangeProbabilitiesAndClose();" class = "nav-button">Submit and close</button>
+	  	</form>
+	  	<br>
+		<a>*out of range values will be set to</a>  
+		<a>Arrival = 0.25</a>
+		<a>Prob P1 = 0.05</a>
+		<a>Prob P2 = 0.25</a>
+		<a>Prob bed -> home = 0.75</a>
+		<a>Prob bed -> home = 0.14</a>
+  	</div>
+	<span style="position:absolute;bottom:85%;left:90%;font-size:20px;cursor:pointer" onclick="openNav('mySidenav2');">&#9776; Probabilities</span>
 	
+	<div id="mySidenav3" class="sidenav">
+		<a href="javascript:void(0)" class="closebtn" onclick="closeNav('mySidenav3')">&times;</a>
+		<h1> Average Service Time</h1>
+		<h1> Exponential</h1>
+		<h1> (0 to 9999)</h1>
+		<form>
+	  	<a> Reception</a>
+	  	<input type = "number" value = "4" maxlength = "4"
+	  	size = "2" min= "1" max = "9999" id = "ServiceReception" class = "tb">
+	  	<a> Triage</a>
+	  	<input type = "number" value = "10" maxlength = "4"
+	  	size = "2" min= "1" max = "9999" id = "ServiceTriage" class = "tb">
+	  	<a> P2 -> Ward</a>
+	  	<input type = "number" value = "720" maxlength = "4"
+	  	size = "2" min= "1" max = "9999" id = "ServiceWard" class = "tb">
+	  	<a> P2 -> Stay</a>
+	  	<input type = "number" value = "120" maxlength = "4"
+	  	size = "2" min= "1" max = "9999" id = "ServiceStay" class = "tb">
+		<a> P1 Service</a>
+	  	<input type = "number" value = "120" maxlength = "4"
+	  	size = "2" min= "1" max = "9999" id = "ServiceP1" class = "tb">
+		<a> P2 Serivce</a>
+	  	<input type = "number" value = "60" maxlength = "4"
+	  	size = "2" min= "1" max = "9999" id = "ServiceP2" class = "tb">  
+		<a> P3 Doctor</a>
+	  	<input type = "number" value = "20" maxlength = "4"
+		size = "2" min= "1" max = "9999" id = "ServiceP3" class = "tb">
+		<a> Pharmacy</a>
+	  	<input type = "number" value = "15" maxlength = "4"
+	  	size = "2" min= "1" max = "9999" id = "ServicePharmacy" class = "tb">
+		<br>
+	  	<button type = "button" value = "submit" id = "ServiceButton"
+		onclick = "ChangeService();" class = "nav-button">Submit</button>
+		<br>
+		<button type = "button" value = "submit" id = "ServiceButton"
+		onclick = "ChangeServiceAndClose();" class = "nav-button">Submit and close</button>
+		</form>
+		<br>
+		<a>*out of range values will be set to</a>  
+		<a>Reception = 4</a>
+		<a>Triage = 10</a>
+		<a>P2 -> ward = 720</a>
+		<a>P2 -> stay = 120</a>
+		<a>P1 service = 120</a>
+		<a>P2 service = 60</a>
+		<a>P3 doctor = 20</a>
+		<a>Pharmacy = 15</a>
+  	</div>
+	<span style="position:absolute;bottom:80%;left:90%;font-size:20px;cursor:pointer" onclick="openNav('mySidenav3');">&#9776; Service</span>
+
+	<div id = "snackbar"> Parameters have been updated </div>
 	<div id="time" style="position:absolute;bottom:0;right:0"></div>
 	<!-- <a id="credits" href="http://www.icons-land.com" style="position:absolute;bottom:0;right:0">Icons by icons-land.com</a> -->
 	
@@ -50,6 +153,7 @@
 	<script type="text/javascript" src="lib/config.js"></script>
 	<script type="text/javascript" src="lib/HMParams.js"></script>
 	<script type="text/javascript" src="lib/HospitalModel.js"></script>
+	<script type="text/javascript" src="lib/UserInput.js"></script>
 	
 </body>
 </html>
