@@ -23,7 +23,7 @@
 	<div id="title"  style="position:absolute;bottom:0;left:0">Hospital Priority Queue</div>
 	
 	<div id="controls" style="position:absolute;bottom:0;left:35%">Animation Speed:
-	<input style = "width:70%"class = "slider" id="slider1" type="range" min = "0" value:"275" max="500" step="10" onchange="redrawWindow();" /> 
+	<input style = "width:70%"class = "slider" id="slider1" type="range" min = "0" value:"275" max="549" step="1" onchange="redrawWindow();" /> 
 	</div>
 	<button id = "saveButton" style="position:absolute;bottom:1%;left:70%;font-size:18px" onclick ="download_csv();">Save Data</button>
 
@@ -38,6 +38,14 @@
 	  	<a> # of receptionist</a>
 	  	<input type = "number" value = "3" maxlength = "1"
 	  	size = "2" min= "1" max = "5" id = "numreception" class = "tb">
+		<h1>Max patients in area</h1>
+		<h1>(1 to 99)</h1>
+		<a>Waiting Area (P3)</a>
+	  	<input type = "number" value = "20" maxlength = "2"
+	  	size = "2" min= "1" max = "99" id = "max_waiting" class = "tb">
+		<a>Bed Area (P3)</a>
+	  	<input type = "number" value = "15" maxlength = "2"
+	  	size = "2" min= "1" max = "99" id = "max_bed" class = "tb">
 		<br>
 	  	<button type = "button" value = "submit" id = "CareButton"
 		onclick = "ChangeCaregivers();" class = "nav-button">Submit</button>
@@ -46,8 +54,11 @@
 		onclick = "ChangeCaregiversAndClose();" class = "nav-button">Submit and close</button>
 		</form>
 		<br>
-		<a>*out of range values</a>  
-		<a>will be set to 1</a>
+		<a>*out of range values will be set to</a>  
+		<a>receptionist = 3</a>
+		<a>P3 doctors = 5</a>
+		<a>Max Waiting Area = 20</a>
+		<a>Max Bed Space = 15</a>
   	</div>
 	<span style="position:absolute;bottom:90%;left:88%;font-size:20px;cursor:pointer" onclick="openNav('mySidenav1');">&#9776; Caregivers</span>
 
