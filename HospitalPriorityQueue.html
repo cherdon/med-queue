@@ -29,36 +29,33 @@
 
 	<div id="mySidenav1" class="sidenav">
 		<a href="javascript:void(0)" class="closebtn" onclick="closeNav('mySidenav1')">&times;</a>
-		<h1>Number of caregivers</h1>
-		<h1>(1 to 5)</h1>
+		
 		<form>
-	  	<a> # of P3 doctors</a>
-	  	<input type = "number" value = "5" maxlength = "1"
-	  	size = "2" min= "1" max = "5" id = "numdoctor3" class = "tb">
-	  	<a> # of receptionist</a>
-	  	<input type = "number" value = "3" maxlength = "1"
-	  	size = "2" min= "1" max = "5" id = "numreception" class = "tb">
-		<h1>Max patients in area</h1>
-		<h1>(1 to 99)</h1>
-		<a>Waiting Area (P3)</a>
-	  	<input type = "number" value = "20" maxlength = "2"
-	  	size = "2" min= "1" max = "99" id = "max_waiting" class = "tb">
-		<a>Bed Area (P2)</a>
-	  	<input type = "number" value = "60" maxlength = "2"
-	  	size = "2" min= "1" max = "99" id = "max_bed" class = "tb">
-		<br>
-	  	<button type = "button" value = "submit" id = "CareButton"
-		onclick = "ChangeCaregivers();" class = "nav-button">Submit</button>
-		<br>
-		<button type = "button" value = "submit" id = "CareButton"
-		onclick = "ChangeCaregiversAndClose();" class = "nav-button">Submit and close</button>
+			<h1>Number of caregivers</h1>
+			<h1>(1 to 5)pax</h1>
+				<a> # of P3 doctors</a>
+				<input type = "number" value = "5" maxlength = "1" size = "2" min= "1" max = "5" id = "numdoctor3" class = "tb">
+				<a> # of Receptionists</a>
+				<input type = "number" value = "3" maxlength = "1" size = "2" min= "1" max = "5" id = "numreception" class = "tb">
+
+			<h1>Area patient capacity</h1>
+			<h1>(1 to 99)pax</h1>
+				<a>Waiting Area (P3)</a>
+				<input type = "number" value = "20" maxlength = "2" size = "2" min= "1" max = "99" id = "max_waiting" class = "tb">
+				<a>Bed Space (P2)</a>
+				<input type = "number" value = "60" maxlength = "2" size = "2" min= "1" max = "99" id = "max_bed" class = "tb">
+			<br>
+			
+			<button type = "button" value = "submit" id = "CareButton"
+			onclick = "ChangeCaregivers();" class = "nav-button">Submit</button>
+			<br>
+			
+			<button type = "button" value = "submit" id = "CareButton"
+			onclick = "ChangeCaregiversAndClose();" class = "nav-button">Submit and close</button>
 		</form>
 		<br>
-		<a>*out of range values will be set to</a>  
-		<a>receptionist = 3</a>
-		<a>P3 doctors = 5</a>
-		<a>Max Waiting Area = 20</a>
-		<a>Max Bed Space = 15</a>
+
+		<a>*Default values will be set to <br>Receptionist = 3 <br>P3 doctors = 5 <br>Max Waiting Area = 20 <br>Max Bed Space = 60</a>
   	</div>
 	<span style="position:absolute;bottom:90%;left:88%;font-size:20px;cursor:pointer" onclick="openNav('mySidenav1');">&#9776; Caregivers</span>
 
@@ -66,70 +63,71 @@
 		<a href="javascript:void(0)" class="closebtn" onclick="closeNav('mySidenav2')">&times;</a>
 		<h1>Probabilites</h1>
 		<h1>(0 to 100)%</h1>
+
 		<form>
-	  	<a> Arrival of patient</a>
-	  	<input type = "number" value = "15" maxlength = "3"
-	  	size = "2" min= "0" max = "100" id = "ProbArrival" class = "tb">
-	  	<a> Prob of P1 patient</a>
-	  	<input type = "number" value = "5" maxlength = "3"
-	  	size = "2" min= "0" max = "100" id = "ProbP1" class = "tb">
-	  	<a> Prob of P2 patient</a>
-	  	<input type = "number" value = "15" maxlength = "3"
-	  	size = "2" min= "0" max = "100" id = "ProbP2" class = "tb">
-		<a> Prob of P3 patient</a>  
-		<a> = 1 - Prob P2 - Prob P3 </a>
-		<br>
-		<br>
-		<a> Prob from bed -> home</a>
-	  	<input type = "number" value = "75" maxlength = "3"
-		size = "2" min= "0" max = "100" id = "ProbBedHome" class = "tb">
-		<a> Prob from bed -> ward</a>
-	  	<input type = "number" value = "24" maxlength = "3"
-		size = "2" min= "0" max = "100" id = "ProbBedWard" class = "tb">
-		<a> Prob from bed -> bed</a>  
-		<a> = 1 - bed->home - bed->ward </a>
-		<br>
-	  	<button type = "button" value = "submit" id = "ProbButton"
-		onclick = "ChangeProbabilities();" class = "nav-button">Submit</button>
-		<br>
-		<button type = "button" value = "submit" id = "ProbButton"
-		onclick = "ChangeProbabilitiesAndClose();" class = "nav-button">Submit and close</button>
-	  	</form>
+			<a> Patient Arrival (overall)</a>
+			<input type = "number" value = "15" maxlength = "3" size = "2" min= "0" max = "100" id = "ProbArrival" class = "tb">
+			<a> Arrival (P1)</a>
+			<input type = "number" value = "5" maxlength = "3" size = "2" min= "0" max = "100" id = "ProbP1" class = "tb">
+			<a> Arrival (P2)</a>
+			<input type = "number" value = "15" maxlength = "3" size = "2" min= "0" max = "100" id = "ProbP2" class = "tb">
+			<a> Arrival (P3)</a>  
+			<a> = 1 - P(P1 Arrival) - P(P2 Arrival) </a>
+			<br>
+			<br>
+			<a> P2 Patient Discharged</a>
+			<input type = "number" value = "75" maxlength = "3"
+			size = "2" min= "0" max = "100" id = "ProbBedHome" class = "tb">
+			<a> P2 Patient Warded</a>
+			<input type = "number" value = "24" maxlength = "3"
+			size = "2" min= "0" max = "100" id = "ProbBedWard" class = "tb">
+			<a> P2 Patient Short Stay</a>  
+			<a> = 1 - P(P2 Discharged) - P(P2 Warded) </a>
+			<br>
+			<button type = "button" value = "submit" id = "ProbButton"
+			onclick = "ChangeProbabilities();" class = "nav-button">Submit</button>
+			<br>
+			<button type = "button" value = "submit" id = "ProbButton"
+			onclick = "ChangeProbabilitiesAndClose();" class = "nav-button">Submit and close</button>
+			</form>
 	  	<br>
-		<a>*out of range values will be set to</a>  
-		<a>Arrival = 0.25</a>
-		<a>Prob P1 = 0.05</a>
-		<a>Prob P2 = 0.25</a>
-		<a>Prob bed -> home = 0.75</a>
-		<a>Prob bed -> home = 0.14</a>
+		<a>*Default values will be set to</a>  
+		<a>Arrival = 0.15</a>
+		<a>P(P1 Arrival) = 0.05</a>
+		<a>P(P2 Arrival) = 0.15</a>
+		<a>P(P2 Discharged) = 0.75</a>
+		<a>P(P2 Warded) = 0.24</a>
   	</div>
 	<span style="position:absolute;bottom:85%;left:88%;font-size:20px;cursor:pointer" onclick="openNav('mySidenav2');">&#9776; Probabilities</span>
 	
 	<div id="mySidenav3" class="sidenav">
 		<a href="javascript:void(0)" class="closebtn" onclick="closeNav('mySidenav3')">&times;</a>
 		<h1> Average Service Time</h1>
-		<h1> Exponential</h1>
 		<h1> (0 to 9999)</h1>
 		<form>
-	  	<a> Reception</a>
-	  	<input type = "number" value = "4" maxlength = "4"
+	  	<a> Reception (Uniform) <br>[Max Value]</a>
+	  	<input type = "number" value = "2" maxlength = "4"
 	  	size = "2" min= "1" max = "9999" id = "ServiceReception" class = "tb">
-	  	<a> Triage</a>
-	  	<input type = "number" value = "10" maxlength = "4"
-	  	size = "2" min= "1" max = "9999" id = "ServiceTriage" class = "tb">
-	  	<a> P2 -> Ward</a>
+	  	<a> Triage (Normal) <br>[Mean Value]</a>
+	  	<input type = "number" value = "6" maxlength = "4"
+		  size = "2" min= "1" max = "9999" id = "ServiceTriage" class = "tb">
+		
+		<br>
+		<br>
+		<a> Exponential Distribution</a>
+	  	<a> P2 Warded</a>
 	  	<input type = "number" value = "720" maxlength = "4"
 	  	size = "2" min= "1" max = "9999" id = "ServiceWard" class = "tb">
-	  	<a> P2 -> Stay</a>
+	  	<a> P2 Short Stay</a>
 	  	<input type = "number" value = "120" maxlength = "4"
 		size = "2" min= "1" max = "9999" id = "ServiceStay" class = "tb">
-		<a> P2 -> Home</a>
+		<a> P2 Discharged</a>
 	  	<input type = "number" value = "720" maxlength = "4"
 	  	size = "2" min= "1" max = "9999" id = "ServiceP2" class = "tb">
-		<a> P1 Service</a>
+		<a> P1 Doctor Service</a>
 	  	<input type = "number" value = "120" maxlength = "4"
 	  	size = "2" min= "1" max = "9999" id = "ServiceP1" class = "tb">
-		<a> P3 Doctor</a>
+		<a> P3 Doctor Service</a>
 	  	<input type = "number" value = "20" maxlength = "4"
 		size = "2" min= "1" max = "9999" id = "ServiceP3" class = "tb">
 		<a> Pharmacy</a>
@@ -143,13 +141,13 @@
 		onclick = "ChangeServiceAndClose();" class = "nav-button">Submit and close</button>
 		</form>
 		<br>
-		<a>*out of range values will be set to</a>  
-		<a>Reception = 4</a>
-		<a>Triage = 10</a>
-		<a>P2 -> ward = 720</a>
-		<a>P2 -> stay = 120</a>
-		<a>P1 service = 120</a>
-		<a>P2 service = 60</a>
+		<a>*Default values will be set to</a>  
+		<a>Reception = 2 [Unif(0,2)]</a>
+		<a>Triage = 6 [Norm(6, 1.5)]</a>
+		<a>P2 Warded = 720</a>
+		<a>P2 Short Stay = 120</a>
+		<a>P2 Discharged = 720</a>
+		<a>P1 Doctor = 120</a>
 		<a>P3 doctor = 20</a>
 		<a>Pharmacy = 15</a>
   	</div>
@@ -158,9 +156,7 @@
 	<div id = "snackbar"> Parameters have been updated </div>
 
 	<div id="time" style="position:absolute;top:1%;left:1%">Time: 0</div>
-	<!-- <a id="credits" href="http://www.icons-land.com" style="position:absolute;bottom:0;right:0">Icons by icons-land.com</a> -->
 	
-
 	<!-- Anything below this line should be a popup window or dialog or a late-loading library -->
 	
 	<script type="text/javascript" src="lib/config.js"></script>
